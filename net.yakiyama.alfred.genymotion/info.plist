@@ -4,6 +4,8 @@
 <dict>
 	<key>bundleid</key>
 	<string>net.yakiyama.alfred.genymotion</string>
+	<key>category</key>
+	<string>Tools</string>
 	<key>connections</key>
 	<dict>
 		<key>11A01C67-1C78-49D5-A527-E0923D2DF836</key>
@@ -18,16 +20,7 @@
 			</dict>
 		</array>
 		<key>E228C4D7-9D25-439E-A00B-94FE94A1F36B</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>2F94556F-062A-4D7D-8743-A9F98C558D6B</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>Jaesung Koo</string>
@@ -100,10 +93,12 @@ $PATH_PLAYER --vm-name {query}</string>
 				<integer>0</integer>
 				<key>queuemode</key>
 				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Loading the list...</string>
 				<key>script</key>
 				<string>python script.py "{query}"</string>
 				<key>title</key>
-				<string>Loading Genymotion virtual devices...</string>
+				<string>Show Genymotion devices</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -116,42 +111,12 @@ $PATH_PLAYER --vm-name {query}</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Genymotion</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>2F94556F-062A-4D7D-8743-A9F98C558D6B</string>
-			<key>version</key>
-			<integer>0</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>11A01C67-1C78-49D5-A527-E0923D2DF836</key>
-		<dict>
-			<key>ypos</key>
-			<real>10</real>
-		</dict>
-		<key>2F94556F-062A-4D7D-8743-A9F98C558D6B</key>
 		<dict>
 			<key>ypos</key>
 			<real>10</real>

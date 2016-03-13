@@ -5,29 +5,34 @@ import sys
 import subprocess
 import re
 import os.path
+import string
+import time
 
 from workflow import Workflow, web
 
+# State  |   IP Address    |                UUID                |      Name
+# --------+-----------------+------------------------------------+---------------
+# Process |         0.0.0.0 |50053fc5-c437-413b-b98a-9696a03c9800| Custom Phone - 4.1.1 - API 16 - 768x1280
+
 def main(wf):
-
-    vbox = "/usr/bin/VBoxManage" if os.path.exists("/usr/bin/VBoxManage") else "/usr/local/bin/VBoxManage"
-
-    output = subprocess.check_output([vbox, "list", "vms"])
+    output = subprocess.check_output(["/Applications/Genymotion.app/Contents/MacOS/gmtool", "admin", "list"])
 
     for line in output.splitlines():
-        matches = re.match(r'\"(.*)\" \{(.*)\}', line, re.M)
+        matches = re.match(r'.*\|.*\|([a-z0-9\-]*)\| (.*)', line, re.M)
 
-        vm_info = subprocess.check_output([vbox, "showvminfo", matches.group(2)])
-        if "Genymotion" in vm_info:
-            tokens = matches.group(1).split(' - ')
+        if not matches:
+            continue
 
-            wf.add_item(
-                title = tokens.pop(0),
-                subtitle = ' - '.join(str(x) for x in tokens) if len(tokens) > 0 else None,
-                arg = matches.group(2),
-                valid = True,
-                uid = matches.group(2)
-            )
+        uuid = matches.group(1)
+        parts = matches.group(2).split(' - ')
+
+        wf.add_item(
+            title = parts[0],
+            subtitle = ' - '.join(parts[1:]),
+            arg = uuid,
+            valid = True,
+            uid = uuid
+        )
 
     wf.send_feedback()
 
